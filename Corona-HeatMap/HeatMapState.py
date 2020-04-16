@@ -22,8 +22,7 @@ df = df_NewYork[ df_NewYork['date'] == last_date]
 
 fig = px.choropleth(df, geojson=counties, locations='fips', color='cases',
                            color_continuous_scale="Viridis",
-                           range_color=(0, 500),
-                           labels={'unemp':'unemployment rate'}
+                           range_color=(0, 500)
                           )
 
 #Added for zoom and to set rest of map to invisible. 
