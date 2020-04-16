@@ -14,15 +14,13 @@ import pandas as pd
 url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
 df = pd.read_csv(url, converters={'fips': lambda x: str(x)})
 
-#df_NewYork = df[ df['state'] == "New York"]
-df_NewYork = df
+
 last_date = df['date'].max()
-#df = df_NewYork[ df_NewYork['date'] == last_date]
-df = df_NewYork[ df_NewYork['date'] == "2020-04-01"]
+df = df[ df['date'] == last_date]
 
 fig = px.choropleth(df, geojson=counties, locations='fips', color='cases',
                            color_continuous_scale="Viridis",
-                           range_color=(1000, 15000),
+                           range_color=(0, 500),
                            scope="usa",
                            labels={'unemp':'unemployment rate'}
                           )
